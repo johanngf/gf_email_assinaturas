@@ -34,3 +34,17 @@ main>.panel{height:100%;align-self:stretch}.right-column{height:100%;align-self:
 .field-error[hidden]{display:none}
 .status.error{color:#a62929}
 @media(max-width:600px){.address-region{grid-template-columns:minmax(0,1fr) 72px}.address-region .field:last-child{grid-column:1/-1}}
+
+
+/* Cabeçalho corporativo fixo durante a rolagem, com logotipo à esquerda. */
+.site-header{position:sticky;top:0;z-index:100;padding-top:14px;padding-bottom:14px;box-shadow:0 3px 12px rgba(2,19,43,.18)}
+.header-inner{display:flex;align-items:center;gap:18px;max-width:1220px;margin:0 auto;min-width:0}
+.header-logo{display:block;flex:none;width:76px;height:76px;object-fit:contain;padding:7px;background:#ffffff;border-radius:10px}
+.header-text{min-width:0}
+@media(max-width:600px){
+ .site-header{padding:11px 14px}
+ .header-inner{gap:11px}
+ .header-logo{width:52px;height:52px;padding:5px;border-radius:8px}
+ .header-text h1{font-size:16px;line-height:1.2;margin-bottom:4px}
+ .header-text p{font-size:11px;line-height:1.4}
+}

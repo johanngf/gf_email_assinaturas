@@ -1,6 +1,6 @@
 # GF Innovation — Editor de assinatura para Outlook Web
 
-Site estático para criação de assinaturas da GF Innovation. **Não possui backend nem armazena automaticamente os dados informados**. Os dados preenchidos só saem do formulário se o usuário decidir copiá-los para a área de transferência ou baixar o HTML.
+Site estático para criação de assinaturas da GF Innovation. O cabeçalho apresenta o logotipo corporativo e permanece visível durante a rolagem. **Não possui backend nem armazena automaticamente os dados informados**. Os dados preenchidos só saem do formulário se o usuário decidir copiá-los para a área de transferência ou baixar o HTML.
 
 ## Usar a assinatura
 
@@ -24,7 +24,7 @@ Não há necessidade de Node, npm, bundler ou etapa de build. Para GitHub Pages,
 
 ```text
 index.html                  Página e campos de configuração
-assets/style.css            Estilos responsivos
+assets/style.css            Estilos responsivos e cabeçalho fixo
 assets/app.js               Máscaras, validações, cópia e exportação
 assets/imagens/*.png        Logotipo e redes sociais
 README.md                   Este manual
