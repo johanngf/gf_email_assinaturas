@@ -1,0 +1,36 @@
+
+:root{font-family:Arial,Helvetica,sans-serif;color:#172439;background:#f4f7fb}
+*{box-sizing:border-box}body{margin:0}header{background:#041b44;color:white;padding:28px max(20px,calc((100vw - 1220px)/2))}
+header h1{font-size:23px;margin:0 0 7px}header p{font-size:14px;color:#d8e6f8;margin:0;line-height:1.6;max-width:920px}
+main{max-width:1230px;padding:24px;margin:auto;display:grid;grid-template-columns:minmax(340px,.95fr) minmax(515px,1.35fr);gap:24px;align-items:stretch}
+.panel{background:white;border:1px solid #dae2ec;border-radius:11px;padding:23px;box-shadow:0 3px 18px #1936530b}
+.panel h2{font-size:17px;margin:0 0 9px;color:#0b2e5a}.hint{font-size:13px;line-height:1.55;color:#576b82;margin:0 0 17px}
+.field{margin:0 0 14px}.field label{display:block;font-size:12px;color:#314663;font-weight:700;margin:0 0 6px}
+.field input,.field textarea{display:block;width:100%;border:1px solid #becddd;border-radius:7px;padding:10px 12px;font:14px Arial,Helvetica,sans-serif;resize:vertical;background:white;color:#142238;outline-color:#0a70d4}
+.field input:focus,.field textarea:focus{box-shadow:0 0 0 3px #dfedff;border-color:#0a70d4}
+.inline-pair{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:end}
+.fixed-field{background:#eef3f9;border:1px solid #d6e0eb;border-radius:7px;padding:10px 12px;font-size:13px;color:#1f3a58;min-height:39px}
+label .tag{color:#57758f;font-weight:400;margin-left:5px}.section{font-size:11px;font-weight:800;color:#44627f;letter-spacing:.09em;text-transform:uppercase;margin:18px 0 12px;padding-bottom:8px;border-bottom:1px solid #dae2ec}
+.helper{font-size:12px;line-height:1.6;color:#56677c;margin:6px 0 17px}.preview-area{margin:17px 0;padding:23px 12px;min-height:260px;overflow:auto;background:#f9fbfe;border:1px dashed #b7c9dc;border-radius:9px}
+#signature{width:max-content;margin:auto}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}.button{border:none;cursor:pointer;border-radius:7px;background:#0872d3;color:#fff;padding:11px 15px;font-size:13px;font-family:Arial,sans-serif;font-weight:bold}
+.button.secondary{background:white;border:1px solid #b8cadf;color:#14518b}.button:focus-visible{outline:3px solid #a5d2ff}
+.status{margin-top:9px;min-height:20px;font-size:12px;font-weight:700;color:#1b6b49}.callout{padding:10px 12px;border-left:3px solid #0872d3;background:#f0f6fe;font-size:12px;color:#364b63;line-height:1.6;margin:17px 0 0}
+.warning{border-left-color:#ce820d;background:#fff8eb}a{color:#0857ab}.right-column{min-width:0;display:flex;flex-direction:column;gap:24px}.instructions h2{margin-bottom:14px}
+.steps{padding-left:25px;font-size:14px;line-height:1.6;margin:0}.steps li{margin:0 0 10px;padding-left:5px}code{background:#eef4fb;padding:2px 4px;border-radius:4px;font:12px monospace}
+footer{text-align:center;color:#64748b;padding:12px 25px 25px;font-size:12px}
+@media(max-width:985px){main{grid-template-columns:1fr}.right-column{gap:18px}}
+@media(max-width:600px){main{padding:10px}.panel{padding:15px}.inline-pair{grid-template-columns:1fr}}
+
+/* A coluna esquerda acompanha a altura total dos dois cartões à direita. */
+main>.panel{height:100%;align-self:stretch}.right-column{height:100%;align-self:stretch}.right-column>.panel{width:100%}.right-column>.instructions{flex:1}
+@media(max-width:985px){main>.panel,.right-column{height:auto}.right-column>.instructions{flex:auto}}
+
+/* Dados estruturados, máscara e validação acessível */
+.address-street{display:grid;grid-template-columns:minmax(0,3fr) minmax(82px,.85fr);gap:12px}
+.address-region{display:grid;grid-template-columns:minmax(0,2fr) minmax(64px,.6fr) minmax(110px,1.15fr);gap:12px}
+.field-tip{font-size:11px;line-height:1.45;color:#66788a;margin:5px 0 0}
+.field input[aria-invalid="true"]{border-color:#bd3434;background:#fff9f9}
+.field-error{display:block;color:#a62929;font-size:11px;line-height:1.4;margin:5px 0 0}
+.field-error[hidden]{display:none}
+.status.error{color:#a62929}
+@media(max-width:600px){.address-region{grid-template-columns:minmax(0,1fr) 72px}.address-region .field:last-child{grid-column:1/-1}}

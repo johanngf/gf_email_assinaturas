@@ -1,0 +1,54 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>GF Innovation | Editor de Assinatura Outlook Web</title><meta name="description" content="Crie e copie a assinatura corporativa GF Innovation para o Outlook Web."><link rel="stylesheet" href="assets/style.css">
+</head><body><header><h1>GF Innovation · Editor de assinatura</h1><p>Modelo reutilizável para Outlook no navegador. Seus dados não são salvos automaticamente nem enviados a servidores pelo editor. Eles são utilizados apenas para gerar a prévia e, quando solicitado, copiar ou baixar a assinatura.</p></header>
+<main>
+<section class="panel" aria-label="Personalização">
+<h2>1. Personalize os campos</h2><p class="hint">Itens com marcadores <strong>[SEU ...]</strong> devem ser preenchidos antes de instalar. O cargo é individual; a empresa <strong>GF Innovation</strong> é fixa.</p>
+<div class="field"><label for="nome">Nome completo <span class="tag">(editável)</span></label><input id="nome" autocomplete="name" placeholder="[SEU NOME]"></div>
+<div class="inline-pair"><div class="field"><label for="cargo">Cargo <span class="tag">(editável)</span></label><input id="cargo" placeholder="[SEU CARGO]"></div>
+<div class="field"><label>Empresa <span class="tag">(fixa)</span></label><div class="fixed-field">GF Innovation</div></div></div>
+<div class="field"><label for="email">E-mail corporativo <span class="tag">(editável)</span></label><input id="email" type="email" autocomplete="email" placeholder="[SEU E-MAIL]" inputmode="email" required></div>
+<div class="field"><label for="telefone">Telefone <span class="tag">(opcional)</span></label><input id="telefone" type="tel" autocomplete="tel-national" inputmode="numeric" maxlength="15" placeholder="(35) 99999-9999 ou deixe em branco"><p class="field-tip">Formato brasileiro com DDD; campo opcional.</p></div>
+<div class="section">Dados corporativos · pré-preenchidos e editáveis</div>
+<div class="field"><label for="site">Site institucional</label><input id="site" type="text" inputmode="url" spellcheck="false" value="www.gfinnovation.com.br" required><p class="field-tip">Domínio ou endereço HTTPS válido.</p></div>
+<p class="helper">O endereço é editado por partes, mas continua aparecendo em duas linhas na assinatura.</p>
+<div class="address-street"><div class="field"><label for="logradouro">Logradouro</label><input id="logradouro" value="Rua Alcides Faria" autocomplete="address-line1" required></div><div class="field"><label for="numero">Número</label><input id="numero" value="69" required></div></div>
+<div class="inline-pair"><div class="field"><label for="complemento">Complemento <span class="tag">(opcional)</span></label><input id="complemento" value="Sala 201" autocomplete="address-line2"></div><div class="field"><label for="bairro">Bairro</label><input id="bairro" value="Varginha" required></div></div>
+<div class="address-region"><div class="field"><label for="cidade">Cidade</label><input id="cidade" value="Itajubá" autocomplete="address-level2" required></div><div class="field"><label for="uf">UF</label><input id="uf" value="MG" maxlength="2" autocomplete="address-level1" required></div><div class="field"><label for="cep">CEP</label><input id="cep" value="37501-058" inputmode="numeric" maxlength="9" autocomplete="postal-code" required></div></div>
+<div class="section">Redes sociais · ícones fixos, destinos editáveis</div>
+<p class="helper">Os três ícones são fixos; seus links devem ser HTTPS válidos da rede correspondente e podem ser editados.</p>
+<div class="field"><label for="facebook">Facebook <span class="tag">(editável)</span></label><input id="facebook" type="url" spellcheck="false" value="https://www.facebook.com/profile.php?id=61570363018458"></div>
+<div class="field"><label for="instagram">Instagram <span class="tag">(editável)</span></label><input id="instagram" type="url" spellcheck="false" value="https://www.instagram.com/gfinnovation_tech/"></div>
+<div class="field"><label for="linkedin">LinkedIn <span class="tag">(editável)</span></label><input id="linkedin" type="url" spellcheck="false" value="https://br.linkedin.com/company/gfinnovationtech"></div>
+</section>
+<div class="right-column">
+<section class="panel" aria-label="Visualização e cópia">
+<h2>2. Visualize e obtenha sua assinatura</h2><p class="hint">Prévia do e-mail (fundo preto, logotipo e dados à direita). O telefone só aparece se preenchido.</p>
+<div class="preview-area"><div id="signature"><table role="presentation" border="0" cellspacing="0" cellpadding="0" width="504" bgcolor="#000000" style="border-collapse:collapse;border:2px solid #292929;background:#000000;width:504px;max-width:504px;font-family:Arial,Helvetica,sans-serif;mso-table-lspace:0pt;mso-table-rspace:0pt;">
+<tr><td width="199" align="center" valign="middle" bgcolor="#000000" style="background:#000000;width:199px;padding:13px;border-right:1px solid #ffffff;vertical-align:middle;text-align:center;"><img src="assets/imagens/logo.png" width="151" height="151" alt="GF Innovation" style="display:block;width:151px;height:151px;border:0;outline:none;text-decoration:none;"></td>
+<td width="305" valign="middle" bgcolor="#000000" style="background:#000000;width:305px;padding:8px 10px 7px 25px;vertical-align:middle;"><table role="presentation" border="0" cellspacing="0" cellpadding="0" width="100%" style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-family:Arial,Helvetica,sans-serif;">
+<tr><td style="font-size:18px;font-weight:bold;line-height:21px;color:#ffffff;padding:0 0 2px 0;">[SEU NOME]</td></tr>
+<tr><td style="font-size:12px;line-height:15px;color:#cccccc;padding:0 0 9px 0;">[SEU CARGO] | GF Innovation</td></tr>
+<tr><td style="font-size:12px;line-height:16px;color:#ffffff;padding:0;"><b>@:</b> [SEU E-MAIL]</td></tr><tr><td style="font-size:12px;line-height:16px;font-weight:bold;color:#ffffff;padding:0 0 4px 0;"><a href="https://www.gfinnovation.com.br" style="color:#ffffff;text-decoration:none;">www.gfinnovation.com.br</a></td></tr><tr><td style="font-size:10px;line-height:13px;color:#b8b8b8;padding:0 0 10px 0;">Rua Alcides Faria, 69, Sala 201<br>Bairro Varginha · Itajubá/MG · CEP 37501-058</td></tr>
+<tr><td style="padding:0;"><table role="presentation" border="0" cellspacing="0" cellpadding="0" style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;"><tr><td style="padding:0 8px 0 0;"><img src="assets/imagens/facebook.png" width="27" height="27" alt="Facebook" style="width:27px;height:27px;display:block;border:0;outline:none;text-decoration:none;"></td><td style="padding:0 8px 0 0;"><img src="assets/imagens/instagram.png" width="27" height="27" alt="Instagram" style="width:27px;height:27px;display:block;border:0;outline:none;text-decoration:none;"></td><td style="padding:0 0px 0 0;"><a href="https://www.linkedin.com/company/gfinnovationtech/" style="text-decoration:none;"><img src="assets/imagens/linkedin.png" width="27" height="27" alt="LinkedIn" style="width:27px;height:27px;display:block;border:0;outline:none;text-decoration:none;"></a></td></tr></table></td></tr>
+</table></td></tr></table></div></div>
+<div class="actions"><button type="button" class="button" id="selecionar">Copiar assinatura</button><button type="button" class="button secondary" id="download">Baixar HTML (alternativa)</button></div>
+<p id="status" class="status" role="status" aria-live="polite"></p>
+<div class="callout"><strong>Duas maneiras de inserir no Outlook Web:</strong> use <strong>Copiar assinatura</strong> para enviá-la formatada à área de transferência e colar no Outlook. Se a cópia for bloqueada, clique em <strong>Baixar HTML (alternativa)</strong>, abra o arquivo baixado no navegador e use o botão <strong>Selecionar assinatura</strong> nele; pressione <strong>Ctrl+C</strong> e cole no Outlook com <strong>Ctrl+V</strong>. Em ambos os casos você copia a assinatura completa, incluindo imagens e links — não apenas a imagem do logotipo.</div>
+</section>
+<section class="panel instructions" id="instalacao" aria-label="Instruções de instalação">
+<h2>3. Instale no Outlook pelo navegador</h2>
+<ol class="steps">
+
+<li>Clique em <strong>Copiar assinatura</strong>. Se falhar, use <strong>Baixar HTML (alternativa)</strong> e siga as instruções presentes no arquivo.</li>
+<li>Abra o <a href="https://outlook.office.com/mail/" target="_blank" rel="noopener noreferrer">Outlook Web</a> e acesse <strong>Configurações (⚙️) → Contas → Assinaturas</strong>.</li>
+<li>Selecione <strong>Adicionar assinatura</strong>, informe um nome e cole com <strong>Ctrl+V</strong> na área de edição.</li>
+<li>Escolha o uso automático em <strong>novas mensagens</strong> e/ou <strong>respostas e encaminhamentos</strong>; depois clique em <strong>Salvar</strong>.</li>
+<li><strong>Envie um e-mail de teste</strong> e confira logotipo, ícones e links.</li>
+</ol>
+<div class="callout" style="margin-top:12px"><strong>Arquivo HTML alternativo:</strong> o download inclui instruções e um botão para <strong>selecionar apenas a assinatura</strong>, sem copiar as instruções. É outra forma de copiar a assinatura para o Outlook Web; não há importação de arquivos HTML pelo menu de assinaturas.</div>
+<div class="callout warning"><strong>Imagens:</strong> use preferencialmente o editor <strong>publicado em HTTPS</strong>: os arquivos PNG serão referenciados pelo endereço público do site. Se a cópia ou a exibição das imagens falhar, confirme que o editor está publicado em HTTPS e envie um e-mail de teste.</div>
+<p class="helper" style="margin:15px 0 0">Fonte: <a href="https://support.microsoft.com/pt-br/outlook/mail/how-to-add-and-change-an-email-signature-in-outlook" target="_blank" rel="noopener noreferrer">Microsoft — Criar uma assinatura no Outlook Web</a>.</p>
+</section>
+</div>
+</main><footer>GF Innovation · Editor de assinatura Outlook Web · Dados não armazenados automaticamente nem enviados pelo editor</footer>
+<script src="assets/app.js" defer></script></body></html>
