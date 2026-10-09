@@ -8,6 +8,7 @@ const required=['nome','cargo','email','site','logradouro','numero','bairro','ci
 const placeholders={nome:'[SEU NOME]',cargo:'[SEU CARGO]',email:'[SEU E-MAIL]'};
 const container=document.getElementById('signature');
 const state=document.getElementById('status');
+const previewArea=document.getElementById('preview-area');
 const el=id=>document.getElementById(id);
 const value=id=>el(id).value.trim();
 const txt=id=>value(id)||placeholders[id]||'';
@@ -68,7 +69,7 @@ function validateAll(){
   }
   state.classList.remove('error');return true;
 }
-function linkHtml(content,url){return url?'<a href="'+esc(url)+'" style="color:#ffffff;text-decoration:none;">'+content+'</a>':content;}
+function linkHtml(content,url){return url?'<a href="'+esc(url)+'" style="color:inherit;text-decoration:none;">'+content+'</a>':content;}
 function icon(id,last){
   const names={facebook:'Facebook',instagram:'Instagram',linkedin:'LinkedIn'};
   const image='<img src="'+IMG_FOLDER+'/'+id+'.png" alt="'+names[id]+'" width="27" height="27" style="display:block;width:27px;height:27px;border:0;outline:none;text-decoration:none;">';
@@ -77,19 +78,21 @@ function icon(id,last){
 }
 function build(){
   const phone=value('telefone'), phoneDigits=onlyDigits(phone);
-  const phoneRow=phone?'<tr><td style="font-size:12px;line-height:16px;color:#ffffff;padding:0;"><b>F:</b> '+linkHtml(esc(phone),[10,11].includes(phoneDigits.length)?'tel:+55'+phoneDigits:'')+'</td></tr>':'';
+  const phoneRow=phone?'<tr><td style="font-size:12px;line-height:16px;padding:0;"><b>F:</b> '+linkHtml(esc(phone),[10,11].includes(phoneDigits.length)?'tel:+55'+phoneDigits:'')+'</td></tr>':'';
   const email=value('email');const emailHref=EMAIL_RE.test(email)?'mailto:'+email:'';
   const lines=addressLines();
   const address=lines.filter(Boolean).map(esc).join('<br>');
-  return `<table role="presentation" border="0" cellspacing="0" cellpadding="0" width="504" bgcolor="#000000" style="border-collapse:collapse;border:2px solid #292929;background:#000000;width:504px;max-width:504px;font-family:Arial,Helvetica,sans-serif;mso-table-lspace:0pt;mso-table-rspace:0pt;">
-<tr><td width="199" align="center" valign="middle" bgcolor="#000000" style="background:#000000;width:199px;padding:13px;border-right:1px solid #ffffff;vertical-align:middle;text-align:center;"><img src="${IMG_FOLDER}/logo.png" width="151" height="151" alt="GF Innovation" style="display:block;width:151px;height:151px;border:0;outline:none;text-decoration:none;"></td>
-<td width="305" valign="middle" bgcolor="#000000" style="background:#000000;width:305px;padding:8px 10px 7px 25px;vertical-align:middle;"><table role="presentation" border="0" cellspacing="0" cellpadding="0" width="100%" style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-family:Arial,Helvetica,sans-serif;">
-<tr><td style="font-size:18px;font-weight:bold;line-height:21px;color:#ffffff;padding:0 0 2px 0;">${esc(txt('nome'))}</td></tr>
-<tr><td style="font-size:12px;line-height:15px;color:#cccccc;padding:0 0 9px 0;">${esc(txt('cargo'))} | GF Innovation</td></tr>
+  // Sem background e sem cores fixas de texto: a assinatura herda a cor do Outlook.
+  // O Outlook pode aplicar suas próprias inversões no modo escuro; o resultado varia por cliente.
+  return `<table role="presentation" border="0" cellspacing="0" cellpadding="0" width="504" style="border-collapse:collapse;width:504px;max-width:504px;font-family:Arial,Helvetica,sans-serif;mso-table-lspace:0pt;mso-table-rspace:0pt;">
+<tr><td width="199" align="center" valign="middle" style="width:199px;padding:13px;border-right:1px solid #a8b4c2;vertical-align:middle;text-align:center;"><img src="${IMG_FOLDER}/logo.png" width="151" height="151" alt="GF Innovation" style="display:block;width:151px;height:151px;border:0;outline:none;text-decoration:none;"></td>
+<td width="305" valign="middle" style="width:305px;padding:8px 10px 7px 25px;vertical-align:middle;"><table role="presentation" border="0" cellspacing="0" cellpadding="0" width="100%" style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-family:Arial,Helvetica,sans-serif;">
+<tr><td style="font-size:18px;font-weight:bold;line-height:21px;padding:0 0 2px 0;">${esc(txt('nome'))}</td></tr>
+<tr><td style="font-size:12px;line-height:15px;padding:0 0 9px 0;">${esc(txt('cargo'))} | GF Innovation</td></tr>
 ${phoneRow}
-<tr><td style="font-size:12px;line-height:16px;color:#ffffff;padding:0;"><b>@:</b> ${linkHtml(esc(txt('email')),emailHref)}</td></tr>
-<tr><td style="font-size:12px;line-height:16px;font-weight:bold;color:#ffffff;padding:0 0 4px 0;">${linkHtml(esc(txt('site')),normalizedUrl(value('site')))}</td></tr>
-<tr><td style="font-size:10px;line-height:13px;color:#b8b8b8;padding:0 0 10px 0;">${address}</td></tr>
+<tr><td style="font-size:12px;line-height:16px;padding:0;"><b>@:</b> ${linkHtml(esc(txt('email')),emailHref)}</td></tr>
+<tr><td style="font-size:12px;line-height:16px;font-weight:bold;padding:0 0 4px 0;">${linkHtml(esc(txt('site')),normalizedUrl(value('site')))}</td></tr>
+<tr><td style="font-size:10px;line-height:13px;padding:0 0 10px 0;">${address}</td></tr>
 <tr><td style="padding:0;"><table role="presentation" border="0" cellspacing="0" cellpadding="0" style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;"><tr>${icon('facebook',false)}${icon('instagram',false)}${icon('linkedin',true)}</tr></table></td></tr>
 </table></td></tr></table>`;
 }
@@ -173,12 +176,24 @@ function copySignature(){
   }
 }
 el('selecionar').addEventListener('click',copySignature);
+// Simulação local do fundo do e-mail. Não integra o HTML copiado ou exportado.
+function setPreviewTheme(theme){
+  previewArea.dataset.previewTheme=theme;
+  for(const btn of document.querySelectorAll('[data-theme-choice]')){
+    const selected=btn.dataset.themeChoice===theme;
+    btn.setAttribute('aria-pressed',String(selected));
+  }
+}
+for(const btn of document.querySelectorAll('[data-theme-choice]')){
+  btn.addEventListener('click',()=>setPreviewTheme(btn.dataset.themeChoice));
+}
+setPreviewTheme(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
 function downloadableHtml(){
   const signature=richSignature();
   return `<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Assinatura GF Innovation | Copiar para Outlook Web</title>
 <style>*{box-sizing:border-box}body{margin:0;font:14px Arial,sans-serif;color:#182c43;background:#f2f5f9}.container{max-width:780px;margin:35px auto;padding:24px}.help{background:white;border:1px solid #d2dfec;border-radius:10px;padding:20px;margin-bottom:24px;line-height:1.6}.help h1{font-size:20px;margin:0 0 12px}.help p{margin:7px 0}.help button{padding:11px 17px;border:0;border-radius:6px;background:#076ed1;color:#fff;font-weight:bold;cursor:pointer}.signature-wrapper{background:#fff;border:1px solid #d2dfec;border-radius:10px;padding:24px 16px;overflow:auto}#signature-content{width:max-content;margin:auto}.note{font-size:12px;color:#586b7c;margin:14px 0 0}</style>
-</head><body><main class="container"><div class="help"><h1>Como inserir esta assinatura no Outlook Web</h1><p>Este HTML é uma <strong>alternativa para copiar a assinatura formatada</strong>, caso o botão de cópia direta do editor não funcione. Não é um arquivo para importar no Outlook.</p><p>1. Clique em <strong>Selecionar assinatura</strong>. 2. Pressione <strong>Ctrl+C</strong>. 3. No Outlook Web, acesse <strong>Configurações → Contas → Assinaturas</strong>, crie ou edite sua assinatura e cole com <strong>Ctrl+V</strong>. 4. Salve e envie um e-mail de teste.</p><button id="select-signature" type="button">Selecionar assinatura</button><p class="note">As instruções não são incluídas na seleção.</p></div>
+</head><body><main class="container"><div class="help"><h1>Como inserir esta assinatura no Outlook Web</h1><p>Este HTML é uma <strong>alternativa para copiar a assinatura formatada</strong>, caso o botão de cópia direta do editor não funcione. Não é um arquivo para importar no Outlook. O fundo é transparente e a cor dos textos é definida pelo Outlook, conforme o tema; a adaptação não é idêntica em todos os clientes.</p><p>1. Clique em <strong>Selecionar assinatura</strong>. 2. Pressione <strong>Ctrl+C</strong>. 3. No Outlook Web, acesse <strong>Configurações → Contas → Assinaturas</strong>, crie ou edite sua assinatura e cole com <strong>Ctrl+V</strong>. 4. Salve e envie um e-mail de teste.</p><button id="select-signature" type="button">Selecionar assinatura</button><p class="note">As instruções não são incluídas na seleção.</p></div>
 <div class="signature-wrapper"><div id="signature-content">${signature}</div></div></main>
 <script>document.getElementById('select-signature').addEventListener('click',function(){const node=document.getElementById('signature-content').firstElementChild;const range=document.createRange();range.selectNode(node);const sel=window.getSelection();sel.removeAllRanges();sel.addRange(range);});<`+`/script></body></html>`;
 }

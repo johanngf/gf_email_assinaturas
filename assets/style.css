@@ -48,3 +48,14 @@ main>.panel{height:100%;align-self:stretch}.right-column{height:100%;align-self:
  .header-text h1{font-size:16px;line-height:1.2;margin-bottom:4px}
  .header-text p{font-size:11px;line-height:1.4}
 }
+
+/* Apenas a prévia alterna a cor de fundo e herda o contraste.
+   O HTML da assinatura enviada não contém fundo nem cor fixa nos textos. */
+.theme-controls{display:flex;align-items:center;justify-content:flex-end;gap:7px;margin:12px 0 -6px;font-size:12px;color:#435c78}
+.theme-choice{padding:6px 12px;border-radius:6px;border:1px solid #aebfd0;background:white;color:#193e65;font:600 12px Arial,sans-serif;cursor:pointer}
+.theme-choice[aria-pressed="true"]{background:#0b3770;color:#fff;border-color:#0b3770}
+.theme-choice:focus-visible{outline:3px solid #90c7f7;outline-offset:2px}
+.preview-area{transition:background-color .18s,color .18s}
+.preview-area[data-preview-theme="light"]{background:#fff;color:#172439}
+.preview-area[data-preview-theme="dark"]{background:#282828;color:#f2f2f2;border-color:#555}
+/* Não recolorir o logotipo corporativo; o próprio arquivo PNG permanece inalterado. */
