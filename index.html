@@ -6,26 +6,101 @@
     <title>GF Innovation | Portal de Ferramentas Internas</title>
     <meta
       name="description"
-      content="Acesso às ferramentas internas da GF Innovation." />
+      content="Acesse as ferramentas internas da GF Innovation: assinaturas de e-mail e Governança Documental." />
+    <link rel="stylesheet" href="shared/base.css" />
   </head>
   <body>
-    <header>
-      <h1>GF Innovation · Portal de Ferramentas Internas</h1>
+    <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+    <header class="site-header">
+      <div class="header-inner">
+        <a
+          class="brand"
+          href="index.html"
+          aria-label="GF Innovation — início do portal">
+          <img
+            class="header-logo"
+            src="assets/imagens/logo.png"
+            alt=""
+            width="48"
+            height="48" />
+          <span>
+            <span class="brand-name">GF Innovation</span>
+            <span class="brand-caption">Portal de Ferramentas Internas</span>
+          </span>
+        </a>
+        <nav class="primary-nav" aria-label="Navegação principal">
+          <a href="index.html" aria-current="page">Início</a>
+          <a href="assinaturas/index.html">Assinaturas</a>
+          <a href="governanca/index.html">Governança Documental</a>
+        </nav>
+      </div>
     </header>
-    <main>
-      <p>Selecione a ferramenta que deseja acessar.</p>
-      <nav aria-label="Ferramentas internas">
-        <ul>
-          <li>
-            <a href="assinaturas/index.html">Assinaturas de e-mail</a>
-            — gere sua assinatura para o Outlook Web.
-          </li>
-          <li>
-            <a href="governanca/index.html">Governança Documental</a>
-            — espaço destinado à Skill institucional.
-          </li>
-        </ul>
-      </nav>
+    <main class="portal-main" id="conteudo" tabindex="-1">
+      <div class="page-intro">
+        <p class="eyebrow">Recursos da organização</p>
+        <h1>Ferramentas internas</h1>
+        <p>
+          Um ponto de acesso às ferramentas e orientações institucionais da GF
+          Innovation. Escolha por onde começar.
+        </p>
+      </div>
+      <div class="tool-grid">
+        <article class="panel tool-card" aria-labelledby="titulo-assinaturas">
+          <span class="tool-mark" aria-hidden="true">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round">
+              <rect x="3" y="5" width="18" height="14" rx="2" />
+              <path d="m3 7 9 6 9-6" />
+            </svg>
+          </span>
+          <h2 id="titulo-assinaturas">Assinaturas de e-mail</h2>
+          <p class="card-description">
+            Crie e copie sua assinatura institucional para o Outlook.
+          </p>
+          <a
+            class="button"
+            href="assinaturas/index.html"
+            aria-label="Acessar ferramenta de assinaturas de e-mail">
+            Acessar ferramenta
+            <span aria-hidden="true">→</span>
+          </a>
+        </article>
+        <article class="panel tool-card" aria-labelledby="titulo-governanca">
+          <span class="tool-mark" aria-hidden="true">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round">
+              <path
+                d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z" />
+              <path d="M14 3v6h6M8 13h8M8 17h5" />
+            </svg>
+          </span>
+          <h2 id="titulo-governanca">Governança Documental</h2>
+          <p class="card-description">
+            Conheça a Skill de Governança Documental Institucional. A
+            distribuição pelo portal está em preparação.
+          </p>
+          <a
+            class="button secondary"
+            href="governanca/index.html"
+            aria-label="Conhecer a ferramenta de Governança Documental">
+            Conhecer ferramenta
+            <span aria-hidden="true">→</span>
+          </a>
+        </article>
+      </div>
     </main>
+    <footer class="site-footer">
+      <p>GF Innovation · Portal de Ferramentas Internas</p>
+    </footer>
   </body>
 </html>
