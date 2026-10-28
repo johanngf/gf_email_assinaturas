@@ -26,6 +26,7 @@
   font-size: 16px;
   line-height: 1.5;
   scroll-padding-top: 112px;
+  scrollbar-gutter: stable;
 }
 * {
   box-sizing: border-box;
