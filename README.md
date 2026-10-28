@@ -57,7 +57,7 @@ README.md                       Documentação
 .gitignore                      Exclusões do repositório
 ```
 
-Os módulos usam navegação HTML convencional. O JavaScript e o CSS do gerador são carregados somente em `assinaturas/index.html`. As três páginas carregam `shared/base.css`, que concentra cores, tipografia, navegação, botões, cartões e rodapé. Os estilos de formulário, prévia e instruções ficam em `assinaturas/assinaturas.css`; a composição de Governança Documental fica em `governanca/governanca.css`. A página inicial reutiliza a base, sem CSS exclusivo. A navegação HTML é repetida localmente nas três páginas, sem JavaScript, templates dinâmicos ou dependências externas.
+As URLs de navegação são `/`, `/assinaturas/` e `/governanca/`, com o servidor estático servindo o `index.html` de cada diretório. Os links são relativos para preservar a publicação sob subdiretórios; não há roteamento JavaScript nem regras adicionais de reescrita. Os endereços antigos com `index.html` continuam acessíveis. Para navegar pelas URLs de diretório, use um servidor HTTP local ou a hospedagem estática. Os módulos usam navegação HTML convencional. O JavaScript e o CSS do gerador são carregados somente em `assinaturas/index.html`. As três páginas carregam `shared/base.css`, que concentra cores, tipografia, navegação, botões, cartões e rodapé. Os estilos de formulário, prévia e instruções ficam em `assinaturas/assinaturas.css`; a composição de Governança Documental fica em `governanca/governanca.css`. A página inicial reutiliza a base, sem CSS exclusivo. A navegação HTML é repetida localmente nas três páginas, sem JavaScript, templates dinâmicos ou dependências externas.
 
 ### Caminhos e compatibilidade
 
@@ -73,7 +73,7 @@ Na raiz do repositório, se Python 3 estiver disponível, execute:
 python3 -m http.server 8000 --bind 127.0.0.1
 ```
 
-Abra `http://localhost:8000/`. As entradas diretas são `http://localhost:8000/assinaturas/index.html` e `http://localhost:8000/governanca/index.html`. Encerre com `Ctrl+C`. Não é necessário instalar pacotes. Também é possível abrir o HTML diretamente, mas a cópia automática depende das permissões do navegador; valide a distribuição em HTTPS e o resultado real no Outlook.
+Abra `http://localhost:8000/`. As entradas diretas são `http://localhost:8000/assinaturas/` e `http://localhost:8000/governanca/`. Encerre com `Ctrl+C`. Não é necessário instalar pacotes. Também é possível abrir o HTML diretamente, mas a cópia automática depende das permissões do navegador; valide a distribuição em HTTPS e o resultado real no Outlook.
 
 ### Lint, formatação e VS Code
 
