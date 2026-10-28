@@ -3,11 +3,11 @@
 Portal estático em HTML, CSS e JavaScript puro, sem dependências de execução, backend, banco de dados ou processo de build. A entrada central oferece acesso a duas funcionalidades independentes:
 
 - **Assinaturas de e-mail:** gerador existente em `assinaturas/index.html`.
-- **Governança Documental:** entrada inicial em `governanca/index.html`, destinada à Skill `governanca-documental-institucional`. Conteúdo, instalação e links oficiais de releases serão implementados posteriormente.
+- **Governança Documental:** apresentação da Skill e template de distribuição em `governanca/index.html`, destinada à Skill `governanca-documental-institucional`. Conteúdo, instalação e links oficiais de releases serão implementados posteriormente.
 
 ## Gerador de assinaturas
 
-Site estático para criação de assinaturas sem fundo da GF Innovation. A assinatura gerada não define cor de fundo nem borda externa e **não fixa cores de texto ou hyperlinks**; permite que a apresentação herde a cor do tema do cliente de e-mail, semelhante ao modelo de referência. A divisória usa cinza neutro para visibilidade em fundos claros e escuros. O cabeçalho apresenta o logotipo corporativo e permanece visível durante a rolagem. **Não possui backend nem armazena automaticamente os dados informados**. Os dados preenchidos só saem do formulário se o usuário decidir copiá-los para a área de transferência ou baixar o HTML.
+Site estático para criação de assinaturas sem fundo da GF Innovation. A assinatura gerada não define cor de fundo nem borda externa e **não fixa cores de texto ou hyperlinks**; permite que a apresentação herde a cor do tema do cliente de e-mail, semelhante ao modelo de referência. A divisória usa cinza neutro para visibilidade em fundos claros e escuros. O cabeçalho apresenta o logotipo corporativo e permanece visível durante a rolagem em desktop; em telas menores ou baixas, acompanha o fluxo da página para liberar espaço útil. **Não possui backend nem armazena automaticamente os dados informados**. Os dados preenchidos só saem do formulário se o usuário decidir copiá-los para a área de transferência ou baixar o HTML.
 
 ## Usar a assinatura
 
@@ -36,7 +36,10 @@ assinaturas/
   assinaturas.css               Estilos específicos do gerador
   assinaturas.js                Máscaras, validações, cópia e exportação
 governanca/
-  index.html                    Entrada inicial de Governança Documental
+  index.html                    Apresentação e template de distribuição da Skill
+  governanca.css                Composição específica da página
+shared/
+  base.css                      Identidade visual e elementos comuns às três páginas
 assets/
   imagens/
     logo.png                    Logotipo com URL pública preservada
@@ -54,7 +57,7 @@ README.md                       Documentação
 .gitignore                      Exclusões do repositório
 ```
 
-Os módulos usam navegação HTML convencional. O JavaScript e o CSS do gerador são carregados somente em `assinaturas/index.html`. As novas páginas usam HTML semântico com a apresentação padrão do navegador; não foram criados scripts, folhas de estilo ou diretórios compartilhados sem necessidade real.
+Os módulos usam navegação HTML convencional. O JavaScript e o CSS do gerador são carregados somente em `assinaturas/index.html`. As três páginas carregam `shared/base.css`, que concentra cores, tipografia, navegação, botões, cartões e rodapé. Os estilos de formulário, prévia e instruções ficam em `assinaturas/assinaturas.css`; a composição de Governança Documental fica em `governanca/governanca.css`. A página inicial reutiliza a base, sem CSS exclusivo. A navegação HTML é repetida localmente nas três páginas, sem JavaScript, templates dinâmicos ou dependências externas.
 
 ### Caminhos e compatibilidade
 
@@ -106,7 +109,34 @@ A reorganização não altera configurações de hospedagem. A seção de Cloudf
 
 ### Próxima etapa
 
-A base está preparada para evolução visual independente. Governança Documental ainda precisa receber o conteúdo oficial, os requisitos e as instruções de instalação, além dos links reais de releases. Não há downloads ou versões fictícios nesta etapa.
+O template institucional está aplicado às três páginas. A próxima etapa é confirmar o repositório e o endereço oficial do pacote, os requisitos e o procedimento de instalação, além de vincular documentação e histórico de releases de Governança Documental. A versão estável inicial 1.0.0 e a homologação no ChatGPT pelos testes H00–H07 foram fornecidas no escopo desta evolução; não foi realizada nova homologação da Skill. Outras plataformas não são apresentadas como compatíveis. O botão de download permanece desabilitado, com aviso explícito, até existir um destino oficial confirmado.
+
+### Template visual e validação
+
+A paleta institucional foi preservada: marinho `#041B44`, ação `#0872D3`, fundo `#F4F7FB`, texto `#172439` e divisórias `#DAE2EC`. A tipografia do portal prioriza Segoe UI e fontes do sistema, com corpo de 16 px, título principal de 28 px, títulos de cartões de 20 px e rótulos de 14 px. O HTML gerado para e-mail conserva suas próprias dimensões, fontes e estilos inline.
+
+O cabeçalho compartilhado tem navegação com `aria-current="page"`, link para pular ao conteúdo e foco visível. Ele permanece sticky em desktop, passando a estático até 900 px de largura ou 600 px de altura. A prévia é uma região acessível por teclado e tem rolagem horizontal própria quando necessário. As instruções e advertências do gerador permanecem abertas e visíveis.
+
+Verificações executadas em Chrome headless, com servidor HTTP local e scripts temporários externos ao repositório:
+
+| Verificação                             | Resultado                                                                                                                                  |
+| --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| Três páginas em 1280, 768, 390 e 320 px | Sem rolagem horizontal global; navegação e conteúdo utilizáveis                                                                            |
+| Layout do gerador                       | Duas colunas no desktop de 1280 px; uma coluna nas demais larguras testadas                                                                |
+| Prévia em mobile                        | Rolagem horizontal limitada ao contêiner; assinatura mantém a largura original                                                             |
+| Teclado                                 | Link de salto funcional; controles acessíveis por Tab, com foco visível e sem encobrimento pelo cabeçalho nos percursos testados           |
+| Formulário e navegação                  | Todos os inputs com label; um h1 e um link ativo por página; botões e links de navegação com altura mínima de 44 px                        |
+| Contraste do texto do portal            | Mínimo medido de 4,82:1; sem falhas nos pares de texto/fundo examinados nas quatro larguras (excluídos assinatura e controle desabilitado) |
+| Ampliação                               | Refluxo em 320 px; teste adicional com fonte raiz ampliada de 16 para 32 px em viewport de 768 px                                          |
+| Gerador antes/depois                    | Prévia, HTML exportado e conteúdos HTML/texto da cópia nativa idênticos para os mesmos dados                                               |
+| Funcionalidades do gerador              | Máscaras, validações, tema da prévia, imagens, alternativa de seleção manual e exportação verificadas                                      |
+| Caminhos                                | Acesso direto, links e recursos locais na raiz e sob `/portal/`; abertura `file:` com imagens base64 e botão de seleção do HTML exportado  |
+| Governança Documental                   | Sem URLs fictícias, scripts novos ou arquivos da Skill; download desabilitado                                                              |
+| Qualidade                               | `npm run check` executado; sem exceções JavaScript não tratadas nos testes de navegador                                                    |
+
+O contraste foi avaliado tendo como referência o [critério de contraste da WCAG 2.2 AA](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html); foco e tamanho dos controles seguem as referências de [foco não encoberto](https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum.html) e [tamanho mínimo de alvo](https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html). Essas verificações não constituem auditoria completa de conformidade: leitores de tela, zoom real da interface do navegador, outros navegadores, Outlook real e produção não foram testados. A alternativa assíncrona de clipboard não foi exercitada; seu código foi preservado.
+
+Foram produzidas capturas comparativas de antes/depois em desktop e do novo template nas quatro larguras. Os artefatos temporários da sessão ficam em `/tmp/gf-visual-captures/`, fora dos arquivos publicados.
 
 ### Validação da migração
 
