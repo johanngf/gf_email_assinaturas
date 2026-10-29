@@ -18,14 +18,21 @@ Site estático para criação de assinaturas sem fundo da GF Innovation. A assin
 5. Se a cópia automática for bloqueada pelo navegador, o conteúdo fica selecionado para cópia manual com `Ctrl+C`. O botão **Baixar HTML (alternativa)** gera uma página independente para selecionar e copiar a assinatura formatada. **O Outlook Web não importa esse HTML como arquivo.**
 6. Salve a assinatura e envie um e-mail de teste, conferindo imagens, telefone e links.
 
-## Implantação no Cloudflare Pages
+## Hospedagem e implantação — GitHub Pages
 
-1. Copie os arquivos desta pasta diretamente para a raiz de seu repositório GitHub.
-2. Em Cloudflare → **Workers & Pages → Create application → Pages → Connect to Git**, conecte o repositório.
-3. Configure **Framework: None**, **Branch: main**, **Build command: `exit 0`** e **Output directory: `.`**.
-4. Publique e teste no endereço HTTPS recebido.
+O portal está publicado em [johanngf.github.io/gf_email_assinaturas](https://johanngf.github.io/gf_email_assinaturas/), pelo **GitHub Pages**.
 
-A publicação não exige Node, npm, bundler ou etapa de build. Node e npm são utilizados somente nas ferramentas de desenvolvimento descritas abaixo. Para GitHub Pages, este repositório também possui `.nojekyll`; consulte as restrições comerciais do serviço.
+Configuração real consultada pela API do GitHub Pages em 29/10/2026:
+
+- Origem de publicação: branch **`master`**, diretório **`/` (raiz)**.
+- Publicação a partir de branch (`build_type: legacy`); não há workflow adicional de deploy criado neste projeto.
+- HTTPS habilitado e último estado consultado `built`.
+
+O site utiliza HTML, CSS e JavaScript estáticos, sem processo de build da aplicação. O arquivo `.nojekyll` é preservado para servir o conteúdo sem processamento Jekyll. Node e npm são utilizados somente nas ferramentas locais de lint e formatação.
+
+Em **Settings → Pages → Build and deployment**, a origem correspondente é **Deploy from a branch**, branch `master`, pasta `/(root)`. Esta revisão apenas consultou a configuração; não a modificou. Mudanças do portal só devem chegar à branch de produção após revisão e autorização. Não é necessário adicionar pipeline, GitHub Actions ou serviço de deploy.
+
+Os caminhos de navegação, CSS, scripts e imagens são relativos para funcionar sob o prefixo `/gf_email_assinaturas/` e em servidor HTTP local. Preserve os caminhos públicos das imagens usadas pelas assinaturas. Cloudflare Pages não é a hospedagem efetiva deste portal.
 
 ## Arquivos
 
@@ -105,7 +112,7 @@ Na implantação dessas ferramentas, `npm run check` passou sem erros. Uma verif
 
 ### Publicação existente
 
-A reorganização não altera configurações de hospedagem. A seção de Cloudflare Pages acima descreve o procedimento documentado originalmente; a hospedagem ativa não foi confirmada nesta etapa. Ela cita `main`, mas a configuração Git local acompanha `origin/master`: confirme a branch efetivamente publicada no provedor antes de qualquer implantação. O arquivo `.nojekyll` foi preservado.
+A hospedagem efetiva é GitHub Pages, com origem na raiz de `master`, conforme a configuração verificada na seção de implantação. A navegação em diretórios (`/assinaturas/` e `/governanca/`) é relativa à raiz publicada do repositório. Esta revisão permanece em branch local própria e não altera a publicação nem a configuração de hospedagem.
 
 ### Distribuição oficial da Skill
 
@@ -116,15 +123,38 @@ A página `/governanca/` utiliza um link HTML direto para o ZIP instalável vers
 - SHA-256: `68c408e8c8b5af7da1198856ffc4736d8df4e1f442b4177930f4a1918cd0c085`.
 - Commit da tag: `589a2970b9dab38859a00bb9eff3810881eafde6`.
 
-As instruções foram conferidas no [README da tag v1.0.0](https://github.com/johanngf/skill_governanca_documental/blob/v1.0.0/README.md). Instalação e funcionamento foram homologados em ChatGPT Plus com Work, no ambiente dos cenários H00–H07, com as ressalvas do [relatório](https://github.com/johanngf/skill_governanca_documental/blob/v1.0.0/tests/HOMOLOGACAO.md). A disponibilidade depende da conta e do ambiente; não há homologação de outras plataformas. Atualizações publicadas no GitHub não atualizam a instalação automaticamente. A página também fornece links para a documentação e o histórico de versões.
+A documentação do pacote permanece no [README da tag v1.0.0](https://github.com/johanngf/skill_governanca_documental/blob/v1.0.0/README.md). As instruções do portal para ChatGPT Work preservam os rótulos de interface validados manualmente pelo responsável: **Plugins → Habilidades → Adicionar → Carregar do seu computador**. Instalação e funcionamento foram homologados em ChatGPT Plus com Work, no ambiente dos cenários H00–H07, com as ressalvas do [relatório](https://github.com/johanngf/skill_governanca_documental/blob/v1.0.0/tests/HOMOLOGACAO.md). A disponibilidade depende da conta e do ambiente; não há homologação de outras plataformas. Atualizações publicadas no GitHub não atualizam a instalação automaticamente. A página também fornece links para a documentação e o histórico de versões.
 
 O acesso público autorizado ao pacote 1.0.0 não concede licença irrestrita nem autoriza automaticamente novos materiais ou versões futuras. O ZIP automático “Source code (zip)” não substitui o pacote instalável. Releases futuras só devem ser integradas após verificação específica, mantendo o endereço versionado, sem `latest`.
 
-A implementação da integração está em `feat/integracao-governanca-v1.0.0`, para revisão antes de merge e publicação do portal.
+A página apresenta instalação por plataforma em acordeões HTML nativos: ChatGPT (Work) aberto inicialmente e Claude fechado. O texto para Claude segue a [documentação oficial de uso](https://support.claude.com/pt/articles/12512180-usar-skills-no-claude), sem afirmar que a versão 1.0.0 foi instalada ou executada com sucesso nessa plataforma. Detalhes de integridade, homologação e direitos continuam nas fontes oficiais vinculadas; não competem com as ações principais da interface.
 
-### Validação da integração da distribuição
+### Pendência de compatibilidade com Claude
 
-Verificações da integração executadas em Chrome headless com contexto anônimo, servidor HTTP local e scripts temporários externos ao repositório:
+A versão 1.0.0 **não foi homologada no Claude**. A documentação [Como criar skills personalizadas](https://support.claude.com/en/articles/12512198-how-to-create-custom-skills) declara limite de 200 caracteres para `description`; o pacote oficial possui 360 caracteres nesse campo. Esse é um possível impedimento de upload, identificado por comparação estática, sem teste em uma conta Claude. Esse limite declarado não comprova, isoladamente, o comportamento do validador do Claude no navegador; a aceitação real exige avaliação específica. Não foi feita adaptação, alteração de metadados, reempacotamento ou mudança do ZIP imutável para contornar isso. As instruções de instalação do portal são condicionadas à aceitação do upload, e a observação de não validação permanece visível no acordeão e em seu título.
+
+Esta revisão utiliza a branch local `feat/revisao-governanca-acordeoes`, sem commit, push, PR, merge ou publicação automática. O foco são as resoluções desktop; não foram adicionados breakpoints nem regras específicas para mobile.
+
+### Validação da revisão desktop e dos acordeões
+
+Nesta revisão local, foram verificadas as resoluções **1280 × 720**, **1366 × 768**, **1440 × 900** e **1920 × 1080**, na raiz do servidor e sob `/portal/`, em Chrome headless com contexto anônimo:
+
+- Dois cartões alinhados, sem rolagem horizontal global, com o botão de download visível na área inicial.
+- ChatGPT inicialmente aberto e Claude fechado; abertura e fechamento por mouse, Enter e Espaço, sem JavaScript na página.
+- Estado de expansão dos controles nativos conferido na árvore de acessibilidade do navegador; navegação por Tab com foco visível, sem encobrimento pelo cabeçalho nos percursos testados.
+- Cartão de instalação reduz sua altura quando os acordeões estão fechados, sem altura mínima artificial.
+- Download efetivo pelo botão: arquivo oficial de 248.808 bytes e SHA-256 esperado, após redirecionamentos do GitHub, sem login.
+- Todos os cinco destinos externos distintos da página retornaram HTTP 200, incluindo a documentação do Claude.
+- Navegação da página inicial para Governança e depois para Assinaturas conferida, com inicialização do gerador e sem exceções JavaScript não tratadas.
+- `npm run check` executado. Página inicial, arquivos do gerador, base compartilhada, imagens e configurações de desenvolvimento preservados; o breakpoint existente de 900 px foi mantido sem novos breakpoints.
+
+Capturas desktop e resultados temporários da sessão estão em `/tmp/gf-governanca-revisao/`, fora do conteúdo publicado. A configuração de GitHub Pages foi consultada somente para leitura; não foi alterada.
+
+Não foram realizados testes de instalação ou execução no Claude, nova homologação no ChatGPT, testes com leitores de tela ou outros navegadores. O foco desta revisão foi desktop; não houve redesenho nem validação visual específica para mobile. Nenhum commit, push, PR, merge ou publicação foi executado.
+
+### Validação anterior da integração da distribuição
+
+Registro da etapa de integração anterior à revisão dos acordeões. Verificações da integração executadas em Chrome headless com contexto anônimo, servidor HTTP local e scripts temporários externos ao repositório:
 
 - Layout, navegação entre as três páginas, links e recursos locais verificados em 1280, 768, 390 e 320 px, tanto na raiz quanto sob `/portal/`, sem rolagem horizontal global.
 - Navegação por Tab, foco visível sem encobrimento e abertura da seção nativa de integridade por Enter verificados. O SHA-256 quebra em múltiplas linhas no celular sem extrapolar o contêiner.
@@ -134,7 +164,7 @@ Verificações da integração executadas em Chrome headless com contexto anôni
 - Gerador de assinaturas, imagens, cabeçalhos, navegação compartilhada, `shared/base.css` e ferramentas de desenvolvimento preservados. Não foram adicionadas dependências nem copiados pacotes para o portal.
 - `npm run check` executado. Capturas e resultados temporários disponíveis na sessão em `/tmp/gf-governanca-integration/`, fora dos arquivos publicados.
 
-Os testes não representam nova homologação da Skill. A instalação em contas individuais, leitores de tela, outros navegadores e a hospedagem de produção do portal não foram verificados nesta etapa. A integração permanece local na branch de implementação, sem merge ou publicação automática.
+Os testes não representam nova homologação da Skill. A instalação em contas individuais, leitores de tela, outros navegadores e a hospedagem de produção do portal não foram verificados nesta etapa. Esses resultados se referem à etapa de integração registrada anteriormente; não equivalem à validação da instalação em outras plataformas.
 
 ### Template visual e validação anterior à integração
 
@@ -183,7 +213,7 @@ Os testes foram pontuais, com script temporário externo ao repositório; não h
 - Se o navegador bloquear a cópia automática, siga a orientação para copiar manualmente ou exportar o HTML. O comportamento de imagens e estilos também depende do Outlook e do cliente de e-mail do destinatário.
 - A máscara de telefone suporta números brasileiros com DDD e 10/11 dígitos; CEP tem oito dígitos; links sociais só aceitam domínios da própria rede e HTTPS. Validações são básicas, não verificam existência das contas ou do endereço.
 
-Documentação: [Microsoft — Assinaturas](https://support.microsoft.com/en-us/outlook/training/sign-in-and-create-a-signature-for-outlook-on-the-web), [MDN — Clipboard API](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard_API), [Cloudflare Pages](https://developers.cloudflare.com/pages/get-started/git-integration/).
+Documentação: [Microsoft — Assinaturas](https://support.microsoft.com/en-us/outlook/training/sign-in-and-create-a-signature-for-outlook-on-the-web), [MDN — Clipboard API](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard_API), [GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site).
 
 ## Assinatura com contraste adaptável (v9)
 
