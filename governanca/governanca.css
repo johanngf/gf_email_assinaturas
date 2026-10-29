@@ -58,6 +58,40 @@
 .platform-list li + li {
   margin-top: 12px;
 }
+.panel .compatibility-note {
+  margin-top: 16px;
+}
+.installation-steps,
+.documentation-links {
+  line-height: 1.6;
+  margin: 0 0 24px;
+  padding-left: 20px;
+}
+.installation-steps li + li,
+.documentation-links li + li {
+  margin-top: 12px;
+}
+.package-integrity {
+  border-top: 1px solid var(--color-border);
+  font-size: 14px;
+  margin-top: 24px;
+  padding-top: 16px;
+}
+.package-integrity summary {
+  color: #075aa9;
+  cursor: pointer;
+  min-height: 44px;
+  padding: 8px 0;
+}
+.package-integrity summary:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 4px;
+}
+.package-integrity code {
+  display: block;
+  overflow-wrap: anywhere;
+  padding: 8px;
+}
 @media (max-width: 900px) {
   .governance-layout {
     grid-template-columns: minmax(0, 1fr);
