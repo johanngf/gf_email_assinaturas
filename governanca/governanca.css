@@ -4,12 +4,51 @@
 }
 .governance-intro {
   margin-bottom: 24px;
+  max-width: 960px;
+}
+.governance-intro p.governance-promise {
+  color: var(--color-navy);
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 12px;
+}
+.skill-capabilities {
+  margin-bottom: 32px;
+}
+.skill-capabilities h2 {
+  color: var(--color-navy);
+  font-size: 20px;
+  margin: 0 0 16px;
+}
+.capability-list {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.capability-list li {
+  border-left: 2px solid var(--color-border);
+  min-width: 0;
+  padding-left: 16px;
+}
+.capability-list h3 {
+  color: var(--color-navy);
+  font-size: 16px;
+  margin: 0 0 8px;
+}
+.capability-list p {
+  color: var(--color-muted);
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
 }
 .governance-layout {
   align-items: start;
   display: grid;
   gap: 24px;
-  grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.8fr);
+  grid-template-columns: minmax(280px, 0.8fr) minmax(0, 1.35fr);
 }
 .platform-accordion {
   border: 1px solid var(--color-border);
@@ -70,6 +109,27 @@
 .installation-steps li + li {
   margin-top: 8px;
 }
+.installation-panel .skill-update {
+  margin-top: 24px;
+}
+.usage-example {
+  border-top: 1px solid var(--color-border);
+  margin-top: 24px;
+  padding-top: 24px;
+}
+.usage-example h3 {
+  margin: 0 0 12px;
+}
+.example-prompt {
+  background: #eef3f9;
+  border-left: 3px solid var(--color-action);
+  border-radius: 0 8px 8px 0;
+  margin: 0;
+  padding: 16px;
+}
+.installation-panel .skill-limits {
+  margin-top: 24px;
+}
 .download-panel {
   border-top: 3px solid var(--color-action);
 }
@@ -94,6 +154,7 @@
   margin-top: 8px;
 }
 @media (max-width: 900px) {
+  .capability-list,
   .governance-layout {
     grid-template-columns: minmax(0, 1fr);
   }
