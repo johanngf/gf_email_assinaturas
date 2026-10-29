@@ -3,7 +3,7 @@
 Portal estático em HTML, CSS e JavaScript puro, sem dependências de execução, backend, banco de dados ou processo de build. A entrada central oferece acesso a duas funcionalidades independentes:
 
 - **Assinaturas de e-mail:** gerador existente em `assinaturas/index.html`.
-- **Governança Documental:** apresentação da Skill e template de distribuição em `governanca/index.html`, destinada à Skill `governanca-documental-institucional`. Conteúdo, instalação e links oficiais de releases serão implementados posteriormente.
+- **Governança Documental:** apresentação, instalação e download oficial da Skill `governanca-documental-institucional` versão 1.0.0 em `/governanca/`.
 
 ## Gerador de assinaturas
 
@@ -107,17 +107,42 @@ Na implantação dessas ferramentas, `npm run check` passou sem erros. Uma verif
 
 A reorganização não altera configurações de hospedagem. A seção de Cloudflare Pages acima descreve o procedimento documentado originalmente; a hospedagem ativa não foi confirmada nesta etapa. Ela cita `main`, mas a configuração Git local acompanha `origin/master`: confirme a branch efetivamente publicada no provedor antes de qualquer implantação. O arquivo `.nojekyll` foi preservado.
 
-### Próxima etapa
+### Distribuição oficial da Skill
 
-O template institucional está aplicado às três páginas. A próxima etapa é confirmar o repositório e o endereço oficial do pacote, os requisitos e o procedimento de instalação, além de vincular documentação e histórico de releases de Governança Documental. A versão estável inicial 1.0.0 e a homologação no ChatGPT pelos testes H00–H07 foram fornecidas no escopo desta evolução; não foi realizada nova homologação da Skill. Outras plataformas não são apresentadas como compatíveis. O botão de download permanece desabilitado, com aviso explícito, até existir um destino oficial confirmado.
+A página `/governanca/` utiliza um link HTML direto para o ZIP instalável versionado, hospedado no repositório canônico da Skill. Nenhum pacote é copiado para o portal e nenhuma API ou JavaScript intermedeia o download.
 
-### Template visual e validação
+- [Release estável e imutável v1.0.0](https://github.com/johanngf/skill_governanca_documental/releases/tag/v1.0.0).
+- [ZIP instalável oficial](https://github.com/johanngf/skill_governanca_documental/releases/download/v1.0.0/governanca-documental-institucional-v1.0.0.zip): `governanca-documental-institucional-v1.0.0.zip`, 248.808 bytes (aproximadamente 249 KB).
+- SHA-256: `68c408e8c8b5af7da1198856ffc4736d8df4e1f442b4177930f4a1918cd0c085`.
+- Commit da tag: `589a2970b9dab38859a00bb9eff3810881eafde6`.
+
+As instruções foram conferidas no [README da tag v1.0.0](https://github.com/johanngf/skill_governanca_documental/blob/v1.0.0/README.md). Instalação e funcionamento foram homologados em ChatGPT Plus com Work, no ambiente dos cenários H00–H07, com as ressalvas do [relatório](https://github.com/johanngf/skill_governanca_documental/blob/v1.0.0/tests/HOMOLOGACAO.md). A disponibilidade depende da conta e do ambiente; não há homologação de outras plataformas. Atualizações publicadas no GitHub não atualizam a instalação automaticamente. A página também fornece links para a documentação e o histórico de versões.
+
+O acesso público autorizado ao pacote 1.0.0 não concede licença irrestrita nem autoriza automaticamente novos materiais ou versões futuras. O ZIP automático “Source code (zip)” não substitui o pacote instalável. Releases futuras só devem ser integradas após verificação específica, mantendo o endereço versionado, sem `latest`.
+
+A implementação da integração está em `feat/integracao-governanca-v1.0.0`, para revisão antes de merge e publicação do portal.
+
+### Validação da integração da distribuição
+
+Verificações da integração executadas em Chrome headless com contexto anônimo, servidor HTTP local e scripts temporários externos ao repositório:
+
+- Layout, navegação entre as três páginas, links e recursos locais verificados em 1280, 768, 390 e 320 px, tanto na raiz quanto sob `/portal/`, sem rolagem horizontal global.
+- Navegação por Tab, foco visível sem encobrimento e abertura da seção nativa de integridade por Enter verificados. O SHA-256 quebra em múltiplas linhas no celular sem extrapolar o contêiner.
+- Botão da página efetivamente clicado no navegador: download concluído após os redirecionamentos do GitHub, sem autenticação, com o nome esperado, 248.808 bytes e SHA-256 correspondente ao pacote oficial.
+- Os cinco destinos oficiais distintos (ZIP, documentação, homologação, release e histórico) retornaram HTTP 200 em verificação anônima independente.
+- Página inicial sem o aviso antigo de preparação e sem download direto; página de Governança sem scripts novos ou URLs dinâmicas de distribuição. Nenhuma exceção JavaScript não tratada foi observada.
+- Gerador de assinaturas, imagens, cabeçalhos, navegação compartilhada, `shared/base.css` e ferramentas de desenvolvimento preservados. Não foram adicionadas dependências nem copiados pacotes para o portal.
+- `npm run check` executado. Capturas e resultados temporários disponíveis na sessão em `/tmp/gf-governanca-integration/`, fora dos arquivos publicados.
+
+Os testes não representam nova homologação da Skill. A instalação em contas individuais, leitores de tela, outros navegadores e a hospedagem de produção do portal não foram verificados nesta etapa. A integração permanece local na branch de implementação, sem merge ou publicação automática.
+
+### Template visual e validação anterior à integração
 
 A paleta institucional foi preservada: marinho `#041B44`, ação `#0872D3`, fundo `#F4F7FB`, texto `#172439` e divisórias `#DAE2EC`. A tipografia do portal prioriza Segoe UI e fontes do sistema, com corpo de 16 px, título principal de 28 px, títulos de cartões de 20 px e rótulos de 14 px. O HTML gerado para e-mail conserva suas próprias dimensões, fontes e estilos inline.
 
 O cabeçalho compartilhado tem navegação com `aria-current="page"`, link para pular ao conteúdo e foco visível. Ele permanece sticky em desktop, passando a estático até 900 px de largura ou 600 px de altura. A prévia é uma região acessível por teclado e tem rolagem horizontal própria quando necessário. As instruções e advertências do gerador permanecem abertas e visíveis.
 
-Verificações executadas em Chrome headless, com servidor HTTP local e scripts temporários externos ao repositório:
+Registro da etapa de template visual, anterior à integração do download oficial. Verificações executadas em Chrome headless, com servidor HTTP local e scripts temporários externos ao repositório:
 
 | Verificação                             | Resultado                                                                                                                                  |
 | --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
