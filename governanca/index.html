@@ -42,163 +42,126 @@
         </nav>
       </div>
     </header>
-    <main class="portal-main" id="conteudo" tabindex="-1">
-      <div class="page-intro">
+    <main class="portal-main governance-page" id="conteudo" tabindex="-1">
+      <div class="page-intro governance-intro">
         <p class="eyebrow">Orientações institucionais</p>
         <h1>Governança Documental</h1>
         <p>
-          Baixe a Skill institucional da GF Innovation e consulte as orientações
-          de instalação para o ambiente homologado.
+          A Skill de Governança Documental Institucional auxilia na criação,
+          revisão e validação de documentos conforme as diretrizes da
+          organização.
         </p>
       </div>
       <div class="governance-layout">
-        <div class="governance-stack">
-          <section class="panel" aria-labelledby="skill-titulo">
-            <h2 id="skill-titulo">
-              Skill de Governança Documental Institucional
-            </h2>
-            <p class="skill-name">
-              <code>governanca-documental-institucional</code>
-            </p>
-            <p>
-              Crie, revise, corrija e valide documentos institucionais com base
-              nas quatro fontes normativas empacotadas da organização.
-            </p>
-            <dl class="skill-facts">
-              <div>
-                <dt>Versão estável</dt>
-                <dd>1.0.0</dd>
-              </div>
-              <div>
-                <dt>Ambiente de homologação</dt>
-                <dd><span class="status-badge">ChatGPT Plus com Work</span></dd>
-              </div>
-              <div>
-                <dt>Referência de testes</dt>
-                <dd>H00–H07, com ressalvas documentadas</dd>
-              </div>
-            </dl>
-          </section>
-          <section class="panel" aria-labelledby="compatibilidade-titulo">
-            <h2 id="compatibilidade-titulo">Compatibilidade por plataforma</h2>
-            <ul class="platform-list">
-              <li>
-                <strong>ChatGPT Plus com Work:</strong>
-                instalação e funcionamento verificados no ambiente de
-                homologação H00–H07, com as ressalvas do relatório. A
-                disponibilidade da instalação pode variar conforme conta,
-                interface, configurações e ambiente.
-              </li>
-              <li>
-                <strong>Outras plataformas de IA:</strong>
-                compatibilidade não homologada.
-              </li>
-            </ul>
-            <p class="helper compatibility-note">
-              O acionamento automático foi avaliado com limitações de
-              observação. Consulte o
-              <a
-                href="https://github.com/johanngf/skill_governanca_documental/blob/v1.0.0/tests/HOMOLOGACAO.md">
-                relatório de homologação H00–H07
-              </a>
-              para conhecer as evidências e seus limites.
-            </p>
-          </section>
-          <section class="panel" aria-labelledby="instalacao-titulo">
-            <h2 id="instalacao-titulo">Como instalar</h2>
-            <ol class="installation-steps">
-              <li>
-                Baixe o ZIP instalável pelo botão
-                <strong>Baixar Skill (.zip)</strong>
-                .
-              </li>
-              <li>
-                No ChatGPT com Work e Skills disponíveis, acesse
-                <strong>
-                  Plugins → Habilidades → Adicionar → Carregar do seu computador
-                </strong>
-                .
-              </li>
-              <li>Selecione o ZIP baixado.</li>
-              <li>
-                Confira a disponibilidade da Skill e utilize-a em uma conversa
-                com acesso ao recurso.
-              </li>
-            </ol>
-            <p class="helper">
-              O recurso depende da conta e do ambiente. Novas versões publicadas
-              no GitHub não atualizam automaticamente a Skill instalada. A
-              utilização também depende das capacidades do ambiente para
-              trabalhar com documentos DOCX.
-            </p>
-          </section>
-        </div>
-        <div class="governance-stack">
+        <section
+          class="panel installation-panel"
+          aria-labelledby="instalacao-titulo">
+          <h2 id="instalacao-titulo">Como instalar</h2>
+          <details class="platform-accordion" open>
+            <summary><span class="platform-name">ChatGPT (Work)</span></summary>
+            <div class="platform-instructions">
+              <ol class="installation-steps">
+                <li>Baixe o ZIP pelo botão disponível nesta página.</li>
+                <li>
+                  No ChatGPT Work, acesse
+                  <strong>
+                    Plugins → Habilidades → Adicionar → Carregar do seu
+                    computador
+                  </strong>
+                  .
+                </li>
+                <li>Selecione o arquivo ZIP baixado.</li>
+                <li>
+                  Confira se a Skill aparece entre suas habilidades e utilize-a
+                  em uma conversa com acesso ao recurso.
+                </li>
+              </ol>
+              <p class="helper">
+                A disponibilidade do recurso pode depender da conta e do
+                ambiente.
+              </p>
+            </div>
+          </details>
+          <details class="platform-accordion">
+            <summary>
+              <span class="platform-name">Claude</span>
+              <span class="platform-status">Não validado</span>
+            </summary>
+            <div class="platform-instructions">
+              <ol class="installation-steps">
+                <li>Baixe o ZIP da Skill pelo botão desta página.</li>
+                <li>
+                  No Claude, verifique se a execução de código e criação de
+                  arquivos está habilitada nas configurações de capacidades.
+                </li>
+                <li>
+                  Acesse
+                  <strong>Personalizar → Skills</strong>
+                  .
+                </li>
+                <li>
+                  Clique em
+                  <strong>+ → Criar skill → Fazer upload de uma skill</strong>
+                  .
+                </li>
+                <li>
+                  Selecione o ZIP e, caso o upload seja aceito, ative a Skill.
+                </li>
+              </ol>
+              <p class="helper">
+                Instalação e funcionamento desta Skill ainda não validados no
+                Claude.
+              </p>
+              <p class="helper">
+                <a
+                  href="https://support.claude.com/pt/articles/12512180-usar-skills-no-claude">
+                  Consultar instruções oficiais do Claude
+                </a>
+              </p>
+            </div>
+          </details>
+        </section>
+        <aside class="panel download-panel" aria-labelledby="download-titulo">
+          <h2 id="download-titulo">Baixe a Skill</h2>
+          <p class="helper">Versão 1.0.0 · Arquivo ZIP</p>
+          <a
+            class="button"
+            href="https://github.com/johanngf/skill_governanca_documental/releases/download/v1.0.0/governanca-documental-institucional-v1.0.0.zip">
+            Baixar Skill (.zip)
+          </a>
           <section
-            class="panel download-panel"
-            aria-labelledby="download-titulo">
-            <p class="eyebrow">Distribuição oficial</p>
-            <h2 id="download-titulo">Download da Skill</h2>
-            <p>Versão 1.0.0 · ZIP · aproximadamente 249 KB</p>
-            <a
-              class="button"
-              href="https://github.com/johanngf/skill_governanca_documental/releases/download/v1.0.0/governanca-documental-institucional-v1.0.0.zip">
-              Baixar Skill (.zip)
-            </a>
-            <p class="helper">
-              Pacote instalável da release estável e imutável. Não utilize o
-              arquivo automático “Source code (zip)” para instalar a Skill.
-            </p>
-            <p>
-              <a
-                href="https://github.com/johanngf/skill_governanca_documental/releases/tag/v1.0.0">
-                Consultar release 1.0.0
-              </a>
-            </p>
-            <details class="package-integrity">
-              <summary>Integridade do pacote (SHA-256)</summary>
-              <p class="helper">Para conferência do arquivo baixado:</p>
-              <code>
-                68c408e8c8b5af7da1198856ffc4736d8df4e1f442b4177930f4a1918cd0c085
-              </code>
-            </details>
-          </section>
-          <section class="panel" aria-labelledby="documentacao-titulo">
-            <h2 id="documentacao-titulo">Documentação e versões</h2>
+            class="skill-documentation"
+            aria-labelledby="documentacao-titulo">
+            <h3 id="documentacao-titulo">Documentação</h3>
             <ul class="documentation-links">
               <li>
                 <a
-                  href="https://github.com/johanngf/skill_governanca_documental/blob/v1.0.0/README.md">
-                  Documentação e instruções
+                  href="https://github.com/johanngf/skill_governanca_documental/blob/v1.0.0/README.md"
+                  target="_blank">
+                  Documentação da Skill
                 </a>
               </li>
               <li>
                 <a
-                  href="https://github.com/johanngf/skill_governanca_documental/blob/v1.0.0/tests/HOMOLOGACAO.md">
-                  Homologação H00–H07 e ressalvas
+                  href="https://github.com/johanngf/skill_governanca_documental/releases/tag/v1.0.0"
+                  target="_blank">
+                  Release oficial
                 </a>
               </li>
               <li>
                 <a
-                  href="https://github.com/johanngf/skill_governanca_documental/releases/tag/v1.0.0">
-                  Release da versão 1.0.0
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://github.com/johanngf/skill_governanca_documental/releases">
+                  href="https://github.com/johanngf/skill_governanca_documental/releases"
+                  target="_blank">
                   Histórico de versões
                 </a>
               </li>
             </ul>
             <p class="helper">
-              A publicação pública deste pacote 1.0.0 foi autorizada. Isso não
-              concede licença irrestrita nem estende a autorização
-              automaticamente a novos materiais ou versões futuras. Consulte os
-              direitos de uso na documentação oficial.
+              Consulte a documentação completa para detalhes técnicos,
+              limitações e direitos de uso.
             </p>
           </section>
-        </div>
+        </aside>
       </div>
     </main>
     <footer class="site-footer">
