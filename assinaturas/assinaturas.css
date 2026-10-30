@@ -181,19 +181,6 @@ label .tag,
 .status.error {
   color: #a62929;
 }
-.steps {
-  line-height: 1.6;
-  margin: 0;
-  padding-left: 24px;
-}
-.steps li {
-  margin-bottom: 16px;
-  padding-left: 4px;
-}
-.steps li::marker {
-  color: #075aa9;
-  font-weight: 700;
-}
 .instructions .callout {
   margin-top: 24px;
 }
@@ -209,9 +196,6 @@ label .tag,
   }
 }
 @media (max-width: 600px) {
-  .signature-layout .panel {
-    padding: 20px;
-  }
   .inline-pair {
     gap: 0;
     grid-template-columns: minmax(0, 1fr);
