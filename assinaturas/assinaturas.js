@@ -127,24 +127,32 @@
     ].filter(Boolean)
     return [line1, parts.join(' · ')]
   }
+  const invalidMessages = {
+    email: 'Informe um e-mail válido.',
+    telefone: 'Informe DDD e telefone com 10 ou 11 dígitos.',
+    site: 'Informe um domínio ou URL HTTPS válida.',
+    facebook: 'Informe uma URL HTTPS válida de facebook.',
+    instagram: 'Informe uma URL HTTPS válida de instagram.',
+    linkedin: 'Informe uma URL HTTPS válida de linkedin.',
+    cep: 'Informe um CEP com 8 dígitos.',
+    uf: 'Informe a sigla do estado (2 letras).',
+  }
+  const requiredMessage = 'Campo obrigatório.'
   function fieldIssue(id) {
     const v = value(id)
-    if (!v) return required.includes(id) ? 'Campo obrigatório.' : ''
+    if (!v) return required.includes(id) ? requiredMessage : ''
     if (id === 'email' && (!EMAIL_RE.test(v) || !el(id).validity.valid))
-      return 'Informe um e-mail válido.'
+      return invalidMessages[id]
     if (id === 'telefone' && ![10, 11].includes(onlyDigits(v).length))
-      return 'Informe DDD e telefone com 10 ou 11 dígitos.'
-    if (id === 'site' && !normalizedUrl(v))
-      return 'Informe um domínio ou URL HTTPS válida.'
+      return invalidMessages[id]
+    if (id === 'site' && !normalizedUrl(v)) return invalidMessages[id]
     if (
       ['facebook', 'instagram', 'linkedin'].includes(id) &&
       !normalizedUrl(v, id)
     )
-      return 'Informe uma URL HTTPS válida de ' + id + '.'
-    if (id === 'cep' && onlyDigits(v).length !== 8)
-      return 'Informe um CEP com 8 dígitos.'
-    if (id === 'uf' && !/^[A-Za-z]{2}$/.test(v))
-      return 'Informe a sigla do estado (2 letras).'
+      return invalidMessages[id]
+    if (id === 'cep' && onlyDigits(v).length !== 8) return invalidMessages[id]
+    if (id === 'uf' && !/^[A-Za-z]{2}$/.test(v)) return invalidMessages[id]
     return ''
   }
   function validateField(id, show) {
@@ -245,15 +253,28 @@ ${phoneRow}
     state.classList.remove('error')
   }
   for (const id of editable) {
-    const input = el(id),
-      field = input.closest('.field')
+    const input = el(id)
     const error = document.createElement('span')
     error.id = 'error-' + id
     error.className = 'field-error'
     error.hidden = true
     error.setAttribute('role', 'alert')
     input.setAttribute('aria-describedby', error.id)
-    field.append(error)
+    const feedback = document.createElement('div')
+    feedback.className = 'field-feedback'
+    const messages = [
+      ...(required.includes(id) ? [requiredMessage] : []),
+      ...(invalidMessages[id] ? [invalidMessages[id]] : []),
+    ]
+    for (const message of messages) {
+      const space = document.createElement('span')
+      space.className = 'field-error-space'
+      space.setAttribute('aria-hidden', 'true')
+      space.textContent = message
+      feedback.append(space)
+    }
+    feedback.append(error)
+    input.after(feedback)
     input.addEventListener('input', () => {
       if (id === 'telefone') input.value = maskPhone(input.value)
       if (id === 'cep') input.value = maskCep(input.value)

@@ -19,7 +19,7 @@
   margin-top: 24px;
 }
 .field {
-  margin: 0 0 20px;
+  margin: 0 0 8px;
   min-width: 0;
 }
 .field label,
@@ -51,13 +51,30 @@
 }
 .field input[aria-invalid='true'] {
   background: #fff9f9;
-  border: 2px solid #a62929;
+  border-color: #a62929;
+}
+.field-feedback {
+  display: grid;
+  position: relative;
+}
+.field-feedback:has(.field-error-space) {
+  margin-top: 2px;
+}
+.field-error,
+.field-error-space {
+  font-size: 13px;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+.field-error-space {
+  grid-area: 1 / 1;
+  visibility: hidden;
 }
 .field-error {
   color: #a62929;
   display: block;
-  font-size: 14px;
-  margin-top: 8px;
+  inset: 0;
+  position: absolute;
 }
 .field-error[hidden] {
   display: none;
